@@ -19,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.maps.MapView;
@@ -30,8 +31,8 @@ import com.mapbox.mapboxsdk.maps.Style;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-     //public static final String user = "names";
-     //TextView txtUser;
+
+    private TextView lblUsuario;
 
     private MapView mapView;
     @Override
@@ -53,23 +54,12 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
-
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         NavigationView navigationView = findViewById(R.id.nav_view);
-       // txtUser = navigationView.getHeaderView(0).findViewById(R.id.txtUser);
+        lblUsuario = navigationView.getHeaderView(0).findViewById(R.id.lblUsuario);
 
-       //if(false){
-       //     user = getIntent().getExtras().getString("usuario");
-      //  }
-
-
-        //txtUser.setText("marcotally95@gmail.com");
-
-        //txtUser = (TextView)findViewById(R.id.email);
-        //String user= getIntent().getStringExtra("names");
-        //txtUser.setText(user);
+        String user= getIntent().getStringExtra("usuario");
+        lblUsuario.setText(user);
 
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -87,12 +77,6 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
-
-       /* Intent inten = getIntent();
-        String message = inten.getStringExtra("user");
-        TextView textView = findViewById(R.id.textemail);
-        textView.setText(message);*/
     }
 
 
